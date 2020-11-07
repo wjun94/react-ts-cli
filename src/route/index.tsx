@@ -6,11 +6,19 @@
  */
 import React from 'react'
 import { RouteProps } from "react-router-dom"
+import Loadable from 'react-loadable'
+const Index = Loadable({
+    loader: () => import('../app/index'),
+    loading: () => <div>Loading...</div>,
+    delay: 1000 // 设置延时
+});
+
+Index.preload()  // 预加载
 
 const routes: RouteProps[] = [
     {
-        path: '/home',
-        component: React.lazy(() => import('../app/home'))
+        path: '/index',
+        component: Index
     },
     {
         path: '/regist',
@@ -23,11 +31,11 @@ const routes: RouteProps[] = [
 
     {
         path: '/',
-        component: React.lazy(() => import('../app/login'))
+        component: Index
     },
     {
         path: '',   // 路由不匹配默认跳到首页
-        component: React.lazy(() => import('../app/login'))
+        component: Index
     },
 ]
 
