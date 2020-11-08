@@ -1,10 +1,10 @@
 const initState = {
-    value: '公共默认值'
+    value: '默认值'
 }
 
-const loverReducer = (state = initState, action) => {
+const reducer = (state = initState, action) => {
     switch (action.type) {
-        case 'add_action':
+        case 'send_type':
             return Object.assign({}, state, action)
         default:
             return state
@@ -12,5 +12,5 @@ const loverReducer = (state = initState, action) => {
 }
 
 module.exports = {
-    loverReducer
+    reducer
 }

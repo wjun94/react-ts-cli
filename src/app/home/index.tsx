@@ -1,6 +1,6 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router'
-import store from '../../store/store'
+import store from '../../store/home/store.js'
 
 export default class Home extends React.Component<RouteComponentProps, {}> {
     componentDidMount() {

@@ -6,11 +6,23 @@
  */
 import React from 'react'
 import { RouteProps } from "react-router-dom"
+import Loadable from 'react-loadable'
+const Mine = Loadable({
+    loader: () => import('../app/mine'),
+    loading: () => <div>Loading...</div>,
+    delay: 1000 // 设置延时
+});
+
+Mine.preload()  // 预加载
 
 const routes: RouteProps[] = [
     {
         path: '/details',
         component: React.lazy(() => import('../app/details'))
+    },
+    {
+        path: '/mine',
+        component: Mine
     },
     {
         path: '/home',

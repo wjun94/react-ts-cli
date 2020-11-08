@@ -28,7 +28,17 @@ export default class SiderDemo extends React.Component<any, any> {
     }
 
     onMenu = (node: string) => {
-        this.props.history.push(node === '1' ? '/home' : '/details')
+        switch (node) {
+            case '1':
+                this.props.history.push('/home')
+                break
+            case '2':
+                this.props.history.push('/details')
+                break
+            case '3':
+                this.props.history.push('/mine')
+                break
+        }
     }
 
     render() {
@@ -40,7 +50,7 @@ export default class SiderDemo extends React.Component<any, any> {
                     </div>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         {
-                            ['1', '2'].map(v => (
+                            ['1', '2', '3'].map(v => (
                                 <Menu.Item key={v} icon={<UserOutlined />} onClick={() => this.onMenu(v)}>
                                     nav {v}
                                 </Menu.Item>

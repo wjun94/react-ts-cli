@@ -2,7 +2,9 @@ import {
     createStore
 } from 'redux'
 import {
-    loverReducer
+    reducer
 } from './reducer'
 
-export default createStore(loverReducer)
+const store = createStore(reducer)
+
+export default store

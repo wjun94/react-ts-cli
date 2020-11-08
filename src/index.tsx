@@ -7,11 +7,15 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import store from './store/store'
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <React.StrictMode>
     <ConfigProvider locale={zhCN}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ConfigProvider>
   </React.StrictMode>,
   document.getElementById('root')
