@@ -1,8 +1,8 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router'
 import { connect } from 'react-redux'
-import reducer from '../../store/home/reducer'
-import { edit } from '../../store/home/action'
+import reducer from '@/store/home/reducer'
+import { edit } from '@/store/home/action'
 
 class Home extends React.Component<RouteComponentProps | any, {}> {
     back = () => {
