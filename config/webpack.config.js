@@ -396,6 +396,12 @@ module.exports = function (webpackEnv) {
 
                 plugins: [
                   [
+                    "@babel/plugin-proposal-decorators", // 这是用来使用修饰器的配置引入@babel/plugin-proposal-decorators
+                    {
+                      "legacy": true
+                    }
+                  ],
+                  [
                     require.resolve('babel-plugin-named-asset-import'),
                     {
                       loaderMap: {
