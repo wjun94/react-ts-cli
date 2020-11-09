@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class App extends React.Component<{ sendAction: Function }, {}> {
     onTest = () => {
-        this.props.sendAction('发送数据')
     }
     render() {
         return (
@@ -15,19 +14,5 @@ class App extends React.Component<{ sendAction: Function }, {}> {
     }
 }
 
-/**
- * 这个函数要有返回一个对象
- * @param {*} dispath
- */
-const mapDispatchProps = (dispatch: Function) => {
-    return {
-        sendAction: (value: string) => {
-            dispatch({
-                type: 'add_action',
-                value
-            })
-        }
-    }
-}
 
-export default connect(null, mapDispatchProps)(App)
+export default connect()(App)

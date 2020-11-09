@@ -1,8 +1,13 @@
 import {
-    createStore
+    createStore,
+    combineReducers,
 } from 'redux'
-import {
-    loverReducer
-} from './reducer'
+import homeReducer from './home/reducer'
+import detailsReducer from './home/reducer'
 
-export default createStore(loverReducer)
+export default createStore(
+    combineReducers({
+        ...homeReducer,
+        ...detailsReducer
+    }),
+)

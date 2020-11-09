@@ -1,16 +1,22 @@
+import {
+    ADD
+} from './action-type'
+
 const initState = {
-    value: '默认值'
+    name: '默认值'
 }
 
-const reducer = (state = initState, action) => {
+const homeReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'send_type':
+        case ADD:
             return Object.assign({}, state, action)
         default:
             return state
     }
 }
 
-module.exports = {
-    reducer
+const obj = {
+    homeReducer
 }
+
+export default obj
