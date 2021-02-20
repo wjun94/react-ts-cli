@@ -20,6 +20,11 @@
     "noEmit": true,
     "jsx": "react",
     "experimentalDecorators": true, // 解决修饰器报错问题
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
   },
   "include": [
     "src"
