@@ -9,6 +9,19 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store'
 import { Provider } from 'react-redux'
+import Api from '@/api/api'
+import * as Utils from '@/utils'
+// import moment from 'moment'
+
+declare global {
+  interface Window {
+    $api: any;
+    $utils: any
+  }
+}
+
+window.$api = Api
+window.$utils = Utils
 
 ReactDOM.render(
   <React.StrictMode>

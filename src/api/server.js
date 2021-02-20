@@ -1,5 +1,5 @@
 import axios from 'axios';
-import envconfig from '@/envconfig/envconfig';
+
 /**
  * 主要params参数
  * @params method {string} 方法名
@@ -15,6 +15,21 @@ import envconfig from '@/envconfig/envconfig';
  * 注意：params中的数据会覆盖method url 参数，所以如果指定了这2个参数则不需要在params中带入
  */
 
+const ENV = process.env.REACT_APP_SECRET_CODE
+
+// 基础路径 、基础路由
+let apiUrl;
+switch (ENV) {
+  case 'production':
+    apiUrl = 'https://api.mobilemart.cn'
+    break
+  case 'pre':
+    apiUrl = 'https://test-api.mobilemart.cn'
+    break
+  default:
+    apiUrl = 'https://dev-api.mobilemart.cn'
+}
+
 export default class Server {
   axios(method, url, params) {
     return new Promise((resolve, reject) => {
@@ -23,7 +38,7 @@ export default class Server {
       _option = {
         method,
         url,
-        baseURL: envconfig.baseURL,
+        baseURL: apiUrl,
         timeout: 30000,
         params: null,
         data: null,
