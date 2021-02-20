@@ -28,7 +28,6 @@ export default class Server {
         params: null,
         data: null,
         headers: null,
-        withCredentials: true, //是否携带cookies发起请求
         validateStatus: (status) => {
           return status >= 200 && status < 300;
         },
