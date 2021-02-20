@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import reducer from '@/store/home/reducer'
 import { edit } from '@/store/home/action'
 import mixin, { sayName } from '@/utils/mixin'
+import './index.scss'
 
 @mixin({ sayName })
 class Home extends React.Component<RouteComponentProps | any, {}> {
@@ -17,7 +18,7 @@ class Home extends React.Component<RouteComponentProps | any, {}> {
     }
 
     render() {
-        return <div>
+        return <div className='home'>
             <p>主页</p>
             <p>redux值：{this.props.name}</p>
             <button onClick={this.back}>返回</button>

@@ -499,7 +499,12 @@ module.exports = function (webpackEnv) {
                     shouldUseSourceMap : isEnvDevelopment,
                 },
                 'sass-loader'
-              ),
+              ).concat({
+                loader: require.resolve("sass-resources-loader"),
+                options: {
+                  resources: [path.resolve(__dirname, "../src/css/common.scss")]
+                }
+              }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
               // Remove this when webpack adds a warning or an error for this.
@@ -519,7 +524,12 @@ module.exports = function (webpackEnv) {
                   },
                 },
                 'sass-loader'
-              ),
+              ).concat({
+                loader: require.resolve("sass-resources-loader"),
+                options: {
+                  resources: [path.resolve(__dirname, "../src/css/common.scss")]
+                }
+              }),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
