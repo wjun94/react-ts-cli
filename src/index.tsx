@@ -9,8 +9,9 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import store from './store/store'
 import { Provider } from 'react-redux'
-import Api from '@/api/api'
+import Api from '@/api'
 import * as Utils from '@/utils'
+import './mock'
 // import moment from 'moment'
 
 declare global {

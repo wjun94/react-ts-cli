@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from 'axios'
+import { message } from 'antd'
 
 /**
  * 主要params参数
@@ -18,23 +19,23 @@ import axios from 'axios';
 const ENV = process.env.REACT_APP_SECRET_CODE
 
 // 基础路径 、基础路由
-let apiUrl;
+let apiUrl
 switch (ENV) {
   case 'production':
-    apiUrl = 'https://api.mobilemart.cn'
+    // apiUrl = 'https://api.mobilemart.cn'
     break
   case 'pre':
-    apiUrl = 'https://test-api.mobilemart.cn'
+    // apiUrl = 'https://test-api.mobilemart.cn'
     break
   default:
-    apiUrl = 'https://dev-api.mobilemart.cn'
+  // apiUrl = 'https://dev-api.mobilemart.cn'
 }
 
 export default class Server {
   axios(method, url, params) {
     return new Promise((resolve, reject) => {
-      if (typeof params !== 'object') params = {};
-      let _option = params;
+      if (typeof params !== 'object') params = {}
+      let _option = params
       _option = {
         method,
         url,
@@ -44,19 +45,25 @@ export default class Server {
         data: null,
         headers: null,
         validateStatus: (status) => {
-          return status >= 200 && status < 300;
+          return status >= 200 && status < 300
         },
         ...params,
       }
-      axios.request(_option).then(res => {
-        resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
-      }, error => {
-        if (error.response) {
-          reject(error.response.data)
-        } else {
-          reject(error)
+      axios.request(_option).then(
+        (res) => {
+          resolve(typeof res.data === 'object' ? res.data : JSON.parse(res.data))
+        },
+        (error) => {
+          const { status, data } = error.response
+          if (status === 403) {
+            message.error(data.message)
+          } else if (data.message) {
+            message.error(data.message)
+          } else {
+            message.error('服务端异常，请稍后重试')
+          }
         }
-      })
+      )
     })
   }
 }
