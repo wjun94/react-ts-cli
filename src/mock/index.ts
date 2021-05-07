@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 
-Mock.mock('/advtgList', {
+Mock.mock('/advtgList', 'get', {
   'list|1-5': [
     {
       name: '@name',
