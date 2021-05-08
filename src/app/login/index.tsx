@@ -4,7 +4,7 @@ export default function Login(props: any) {
     function onSubmit() {
         // props.history
         console.log(props)
-        props.history.push({ pathname: '/home', query: `id=1` })
+        props.history.push({ pathname: '/company/info', query: `id=1` })
     }
     return (
         <div>

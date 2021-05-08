@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, RouteProps } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, RouteProps } from 'react-router-dom'
 import routes from './route'
 
 function App() {
@@ -7,15 +7,20 @@ function App() {
     <Router>
       <React.Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          {
-            routes.map((route: RouteProps) => {
-              return <Route exact={route.path === "/login"} key={'router-' + route.path} path={route.path} component={route.component} />
-            })
-          }
+          {routes.map((route: RouteProps) => {
+            return (
+              <Route
+                exact={route.path === '/login'}
+                key={'router-' + route.path}
+                path={route.path}
+                component={route.component}
+              />
+            )
+          })}
         </Switch>
       </React.Suspense>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

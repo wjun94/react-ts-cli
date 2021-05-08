@@ -1,12 +1,18 @@
 .app-page {
   min-height: 100%;
+  min-width: 700px;
+  max-height: 100%;
+
+  .img {
+    width: 16px;
+  }
 
   header {
     background-color: white;
   }
 
   .ant-layout-sider-children {
-    // overflow: auto;
+    overflow: auto;
     // height: 100vh;
     // position: fixed;
     // left: 0px;
@@ -17,12 +23,29 @@
     // width: 200px;
   }
 
-  .app-content {
-    border-radius: 6px;
-    margin: 0 16px;
-    padding: 24px;
-    background-color: white;
-    min-height: 90%;
+  .ant-layout {
+    min-width: 700px;
+    overflow: auto;
+
+    .ant-layout-content {
+      min-height: auto;
+      padding-bottom: 14px;
+
+      .app-main {
+        border-radius: 6px;
+        min-height: calc(100% - 84px);
+        // height: calc(100% - 84px);
+        // height: calc(100% - 40px);
+        // height: calc(100% - 84px);
+        margin: 0 16px;
+
+        .app-container {
+          padding: 16px;
+          background-color: white;
+          border-radius: 2px;
+        }
+      }
+    }
   }
 
   .trigger {
@@ -57,9 +80,16 @@
     }
   }
 
-  footer {
-    margin: 16px;
-    background-color: white;
-    border-radius: 6px;
+  .footer-div {
+    height: 56px;
+
+    .ant-layout-footer {
+      height: 40px;
+      // line-height: 30px;
+      margin: 14px;
+      border-radius: 2px;
+      background-color: white;
+      min-width: 600px;
+    }
   }
 }

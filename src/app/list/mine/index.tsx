@@ -5,7 +5,7 @@ class App extends React.Component<any, {}> {
 
     render() {
         return (
-            <div>
+            <div className='msg-edit animate app-container'>
                 <p>我的</p>
             </div>
         )
