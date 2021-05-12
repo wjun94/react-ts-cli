@@ -60,6 +60,14 @@ export const routes = [
     ],
   },
   {
+    path: '/403', // 路由不匹配跳到404
+    component: React.lazy(() => import('@/app/403')),
+  },
+  {
+    path: '/',
+    redirect: '/company/info', // 重定向
+  },
+  {
     path: '',
     component: React.lazy(() => import('@/app/404')),
   },
