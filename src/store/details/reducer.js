@@ -1,18 +1,23 @@
+import { SetData } from './active-type'
+
 const initState = {
-    value: '默认值'
+  data: [],
 }
 
-const reducer = (state = initState, action) => {
-    switch (action.type) {
-        case 'send_type':
-            return Object.assign({}, state, action)
-        default:
-            return state
-    }
+const detailsReducer = (state = initState, action) => {
+  switch (action.type) {
+    case SetData:
+      return {
+        ...state,
+        data: action.data,
+      }
+    default:
+      return state
+  }
 }
 
 const obj = {
-    reducer
+  detailsReducer,
 }
 
 export default obj

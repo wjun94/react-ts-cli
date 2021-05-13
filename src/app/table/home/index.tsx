@@ -8,32 +8,37 @@ import './index.scss'
 
 @mixin({ sayName })
 class Home extends React.Component<RouteComponentProps | any, {}> {
-    async componentDidMount() {
-        const result = await window.$api.advtgList()
-        console.log(result)
-    }
+  async componentDidMount() {
+    const result = await window.$api.advtgList()
+    console.log(result)
+  }
 
-    back = () => {
-        this.props.history.goBack()
-    }
+  back = () => {
+    this.props.history.goBack()
+  }
 
-    onSend = () => {
-        (this as any).sayName()
-        this.props.homeReducer({}, edit('redux传值'))
-    }
+  onSend = () => {
+    ;(this as any).sayName()
+    this.props.homeReducer({}, edit('redux传值'))
+  }
 
-    render() {
-        return <div className='home'>
-            <p>主页</p>
-            <p>redux值：{this.props.name}</p>
-            <button onClick={this.back}>返回</button>
-            <button onClick={this.onSend}>传值</button>
-        </div>
-    }
+  render() {
+    return (
+      <div className="home app-container">
+        <p>主页</p>
+        <p>redux值：{this.props.name}</p>
+        <button onClick={this.back}>返回</button>
+        <button onClick={this.onSend}>传值</button>
+      </div>
+    )
+  }
 }
 
-export default connect((state: any) => ({
-    name: state.homeReducer.name
-}), {
-    ...reducer
-})(Home)
+export default connect(
+  (state: any) => ({
+    name: state.homeReducer.name,
+  }),
+  {
+    ...reducer,
+  }
+)(Home)
