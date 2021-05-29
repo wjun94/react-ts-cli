@@ -4,6 +4,7 @@ import { MenuInfo } from 'rc-menu/lib/interface'
 import { Switch, Route, RouteProps, Redirect } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import Avatar from '@/components/avatar'
 import './index.scss'
 import routes, { routes as tabs } from '../../route/child'
 
@@ -98,6 +99,10 @@ export default class SiderDemo extends React.Component<RouteComponentProps, S> {
     const { defaultOpenKeys, defaultSelectedKeys, title } = this.state
     return (
       <Layout className="app-page">
+        <Header className="both-sides-center app-header">
+          <h1>测试平台</h1>
+          <Avatar />
+        </Header>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="info flex-top-center">
             <p>&nbsp;中午好</p>

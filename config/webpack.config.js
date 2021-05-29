@@ -55,6 +55,8 @@ const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
+const lessRegex = /\.less$/
+const lessModuleRegex = /\.module\.less$/
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
@@ -512,7 +514,7 @@ module.exports = function (webpackEnv) {
             },
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
-            {
+            /* {
               test: sassModuleRegex,
               use: getStyleLoaders(
                 {
@@ -527,6 +529,26 @@ module.exports = function (webpackEnv) {
                 loader: require.resolve('sass-resources-loader'),
                 options: {
                   resources: [path.resolve(__dirname, '../src/css/common.scss')],
+                },
+              }),
+            }, */
+            {
+              test: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 3,
+                  sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+                  modules: {
+                    getLocalIdent: getCSSModuleLocalIdent,
+                  },
+                },
+                'less-loader'
+              ).concat({
+                loader: require.resolve('style-resources-loader'),
+                options: {
+                  patterns: [
+                    path.resolve(__dirname, '../node_modules/antd/es/style/themes/default.less'),
+                  ],
                 },
               }),
             },
